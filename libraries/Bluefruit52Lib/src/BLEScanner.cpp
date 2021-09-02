@@ -133,7 +133,7 @@ bool BLEScanner::start(uint16_t timeout)
   _report_data.p_data  = _scan_data;
 
   if(_scanBufLen == 0) {
-    _scanBufLen = BLE_GAP_SCAN_BUFFER_MAX
+    _scanBufLen = BLE_GAP_SCAN_BUFFER_MAX;
   }
 
   _report_data.len     = _scanBufLen;
