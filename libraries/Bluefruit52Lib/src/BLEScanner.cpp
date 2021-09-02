@@ -70,12 +70,12 @@ BLEScanner::BLEScanner(void)
   });
 }
 
-void BLEScanner::useActiveScan(bool enable)
+void BLEScanner::useActiveScan(uint8_t enable)
 {
   _param.active = enable;
 }
 
-void BLEScanner::useExtendedAdvScan(bool enable)
+void BLEScanner::useExtendedAdvScan(uint8_t enable)
 {
   _param.extended = enable;
 }
@@ -84,6 +84,12 @@ void BLEScanner::usePhy(uint8_t phy)
 {
   _param.scan_phys = phy;
 }
+
+void BLEScanner::useScanBufferLength(uint16_t len) 
+{
+  _scanBufLen = len;
+}
+
 
 void BLEScanner::setInterval(uint16_t interval, uint16_t window)
 {
@@ -125,7 +131,12 @@ ble_gap_scan_params_t* BLEScanner::getParams(void)
 bool BLEScanner::start(uint16_t timeout)
 {
   _report_data.p_data  = _scan_data;
-  _report_data.len     = BLE_GAP_SCAN_BUFFER_MAX;
+
+  if(_scanBufLen == 0) {
+    _scanBufLen = BLE_GAP_SCAN_BUFFER_MAX
+  }
+
+  _report_data.len     = _scanBufLen;
 
   _param.timeout = timeout;
 

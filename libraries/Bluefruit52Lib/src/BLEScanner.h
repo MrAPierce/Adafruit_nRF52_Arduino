@@ -53,9 +53,10 @@ public:
   ble_gap_scan_params_t* getParams(void);
   bool isRunning(void);
 
-  void useActiveScan(bool enable);
-  void useExtendedAdvScan(bool enable);
+  void useActiveScan(uint8_t enable);
+  void useExtendedAdvScan(uint8_t enable);
   void usePhy(uint8_t phy);
+  void useScanBufferLength(uint16_t len);
   void setInterval(uint16_t interval, uint16_t window);
   void setIntervalMS(uint16_t interval, uint16_t window);
   void restartOnDisconnect(bool enable);
@@ -106,8 +107,8 @@ private:
 
   bool       _runnning;
   bool       _start_if_disconnect;
-  bool       _useExtended;
   uint8_t    _scanPhy;
+  uint16_t   _scanBufLen;
 
   int8_t     _filter_rssi;
   bool       _filter_msd_en; // since all value of manufacturer id is valid (0-FFFF)
