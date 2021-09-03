@@ -80,7 +80,7 @@ void BLEScanner::useExtendedAdvScan(uint8_t enable)
   _param.extended = enable;
 }
 
-void BLEScanner::usePhy(uint8_t phy) 
+void BLEScanner::usePhys(uint8_t phy) 
 {
   _param.scan_phys = phy;
 }
