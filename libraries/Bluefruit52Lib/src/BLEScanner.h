@@ -55,7 +55,7 @@ public:
 
   void useActiveScan(uint8_t enable);
   void useExtendedAdvScan(uint8_t enable);
-  void usePhy(uint8_t phy);
+  void usePhys(uint8_t phy);
   void useScanBufferLength(uint16_t len);
   void setInterval(uint16_t interval, uint16_t window);
   void setIntervalMS(uint16_t interval, uint16_t window);
